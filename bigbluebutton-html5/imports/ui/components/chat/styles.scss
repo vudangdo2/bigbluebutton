@@ -1,0 +1,114 @@
+@import "/imports/ui/stylesheets/mixins/focus";
+@import "/imports/ui/stylesheets/variables/_all";
+
+
+
+@mixin lineClamp($lineHeight: 1em, $lineCount: 1, $bgColor: inherit) {
+  display: block;
+  box-orient: vertical;
+  position: relative;
+  word-break: break-word;
+
+  overflow: hidden;
+  line-height: $lineHeight;
+  max-height: calc(#{"$lineHeight * $lineCount"});
+
+  &:before {
+    content: '...';
+    width: 10%;
+    height: lineHeight;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), $bgColor 75%);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: $lineHeight;
+    margin-top: 0.2em;
+    background-color: $bgColor;
+  }
+}
+
+.chat {
+  background-color: #fff;
+  padding: var(--md-padding-x);
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+  height: 100vh;
+  transform: translateZ(0);
+}
+
+.header {
+  position: relative;
+  top: var(--poll-header-offset);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  @extend %text-elipsis;
+  flex: 1;
+
+  & > button, button:hover {
+    max-width: 98%;
+  }
+  
+}
+
+.hideBtn {
+  position: relative;
+  background-color: var(--color-white);
+  display: block;
+  margin: var(--border-size-large);
+  margin-bottom: var(--border-size);
+  padding-left: 0px;
+
+  > i {
+      color: var(--color-gray-dark);
+      font-size: smaller;
+  }
+
+  &:hover {
+      background-color: var(--color-white);
+  }
+}
+
+.link {
+  text-decoration: none;
+  background-color: inherit;
+}
+
+.pushMessageContent {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1.4rem;
+  margin-bottom: .4rem;
+  background-color: inherit;
+}
+
+.userNameMessage {
+  margin: 0;
+  font-size: 80%;
+  color: var(--color-gray-dark);
+  font-weight: bold;
+  background-color: inherit;
+  @include lineClamp(1em, 1);
+}
+
+.contentMessage {
+  margin-top: .2rem;
+  font-size: 80%;
+  background-color: inherit;
+  @include lineClamp(var(--font-size-small), 10);
+}

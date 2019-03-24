@@ -1,0 +1,54 @@
+@import "../styles.scss";
+@import "/imports/ui/stylesheets/variables/_all";
+@import "/imports/ui/stylesheets/variables/typography";
+
+.chatListItem {
+  @extend %list-item;
+  cursor: pointer;
+  text-decoration: none;
+  flex-grow: 1;
+  line-height: 2;
+  color: var(--color-gray-dark);
+  background-color: var(--color-off-white);
+  padding-top: var(--lg-padding-y);
+  padding-bottom: var(--lg-padding-y);
+  padding-left: var(--lg-padding-y);
+}
+
+.chatListItemLink {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.chatIcon {
+  flex: 0 0 2.2rem;
+}
+
+.chatName {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.chatNameMain {
+  @extend %no-margin;
+  @extend %text-elipsis;
+  font-weight: 400;
+  font-size: var(--font-size-small);
+  color: var(--color-gray-dark);
+  flex-grow: 1;
+  line-height: 2;
+  text-align: left;
+  padding-left: var(--lg-padding-y);
+  text-overflow: ellipsis;
+}
+
+.active {
+  background-color: var(--list-item-bg-hover);
+  box-shadow: inset 0 0 0 var(--border-size) var(--item-focus-border), inset 1px 0 0 1px var(--item-focus-border);
+  outline: none;
+}
